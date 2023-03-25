@@ -1,4 +1,4 @@
-name: Lint Source Code
+name: Lint & Build Source Code
 
 on:
   # Trigger the workflow on push or pull request,
@@ -11,8 +11,8 @@ on:
       - main
 
 jobs:
-  run-linters:
-    name: Run linters
+  run-ci:
+    name: Run CI
     runs-on: ubuntu-latest
 
     steps:
@@ -31,3 +31,6 @@ jobs:
 
       - name: Run linters
         run: yarn lint
+
+      - name: Run TypeChecker
+        run: yarn build

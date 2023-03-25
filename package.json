@@ -6,7 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "tsc --no-emit",
+    "build": "tsc --noEmit",
     "lint": "eslint scripts",
     "lint:fix": "yarn lint --fix && yarn prettier",
     "prettier": "prettier scripts",
