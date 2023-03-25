@@ -1,0 +1,28 @@
+{
+  "name": "tenant",
+  "version": "0.0.0",
+  "description": "Lease out subdomains by leveraging github actions",
+  "author": "Zaid (Nico) <nico.03727+github@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --no-emit",
+    "lint": "eslint scripts",
+    "lint:fix": "yarn lint --fix && yarn prettier",
+    "prettier": "prettier scripts",
+    "check:domains": "ts-node-esm scripts/check-domains-content.ts",
+    "check:dns": "ts-node-esm scripts/check-dns.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.8",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.36.0",
+    "eslint-config-neon": "^0.1.41",
+    "prettier": "^2.8.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0"
+  }
+}

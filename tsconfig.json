@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "esnext",
+      "module": "esnext",
+      "moduleResolution": "nodenext",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "noImplicitAny": false
+    },
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "include": ["./scripts/**/*.ts"]
+  }
