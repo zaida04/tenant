@@ -1,9 +1,12 @@
 name: Sync DNS Records
 
 on:
-  pull_request:
+  workflow_dispatch:
+  push:
     branches:
       - main
+    paths:
+      - "domains.json"
 
 jobs:
   publish-records:
@@ -25,3 +28,6 @@ jobs:
 
       - name: Run Syncer
         run: yarn check:dns
+        env:
+          CF_API_KEY: ${{env.CF_API_KEY}}
+          DOMAIN: ${{env.DOMAIN}}

@@ -3,8 +3,7 @@ import process from "node:process";
 import { cf } from "./fetch.js";
 import type { paths } from "./types.js";
 
-if (!process.env.CF_API_KEY) throw new Error("Missing cloudflare API key!");
-const { fetch } = cf(process.env.CF_API_KEY);
+const { fetch } = cf(process.env.CF_API_KEY!);
 
 export const getAllDomains = async () =>
   fetch<

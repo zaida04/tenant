@@ -8,7 +8,10 @@ import {
 } from "./cloudflare/cloudflare.js";
 import { loadDomainsFile } from "./load-domains-file.js";
 
-const domain = process.env.DOMAIN?.toLowerCase();
+if (!process.env.CF_API_KEY) throw new Error("Missing cloudflare API key!");
+if (!process.env.DOMAIN) throw new Error("Missing domain env var!");
+
+const domain = process.env.DOMAIN.toLowerCase();
 
 const findRecordsNotAdded = (localRecords: string[], dnsRecords: string[]) => {
   const needToAdd: string[] = [];
