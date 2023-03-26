@@ -6,8 +6,8 @@ import {
   getAllRecords,
   publishRecord,
 } from "./cloudflare/cloudflare.js";
-import { loadDomainsFile } from "./load-domains-file.js";
 import { inputError } from "./inputError.js";
+import { loadDomainsFile } from "./load-domains-file.js";
 
 if (!process.env.CF_API_KEY) throw new Error("Missing cloudflare API key!");
 if (!process.env.DOMAIN) throw new Error("Missing domain env var!");

@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc --noEmit",
     "lint": "eslint scripts",
-    "lint:fix": "yarn lint --fix && yarn prettier",
+    "lint:fix": "yarn lint --fix && yarn prettier --write",
     "prettier": "prettier scripts",
     "check:domains": "ts-node-esm scripts/check-domains-content.ts",
     "check:dns": "ts-node-esm scripts/check-dns.ts"
