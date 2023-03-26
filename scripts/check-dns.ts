@@ -7,6 +7,7 @@ import {
   publishRecord,
 } from "./cloudflare/cloudflare.js";
 import { loadDomainsFile } from "./load-domains-file.js";
+import { inputError } from "./inputError.js";
 
 if (!process.env.CF_API_KEY) throw new Error("Missing cloudflare API key!");
 if (!process.env.DOMAIN) throw new Error("Missing domain env var!");
@@ -16,8 +17,8 @@ const domain = process.env.DOMAIN.toLowerCase();
 const findRecordsNotAdded = (localRecords: string[], dnsRecords: string[]) => {
   const needToAdd: string[] = [];
 
-  for (const domain of localRecords) {
-    if (!dnsRecords.includes(domain)) needToAdd.push(domain);
+  for (const record of localRecords) {
+    if (!dnsRecords.includes(`${record}.${domain}`)) needToAdd.push(record);
   }
 
   return needToAdd;
@@ -58,10 +59,17 @@ const main = async () => {
     Object.keys(loadedRecords),
     allRecords.map((x) => x.name)
   );
+
+  if (!subdomainsToAdd.length) {
+    console.log(chalk.yellow("No records to sync, up-to-date!"));
+    return;
+  }
+
   console.log(
     chalk.yellow(`Adding records for subdomains: ${subdomainsToAdd}`)
   );
 
+  let anyFail = false;
   for (const subdomain of subdomainsToAdd) {
     console.log(chalk.yellow(`Adding record for subdomain "${subdomain}"`));
     const addSubdomain = await publishRecord(
@@ -76,6 +84,7 @@ const main = async () => {
           `Error adding subdomain "${subdomain}" with destination "${loadedRecords[subdomain]}".`
         )
       );
+      anyFail = true;
       continue;
     }
 
@@ -83,6 +92,11 @@ const main = async () => {
   }
 
   console.log(chalk.green("Subdomain sync complete."));
+  if (process.env.CI && anyFail) {
+    throw new inputError(
+      "At least one domain failed. Throwing error to fail this workflow."
+    );
+  }
 };
 
 void main();
