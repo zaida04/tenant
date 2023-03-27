@@ -1,6 +1,6 @@
 # Tenant
 
-> Lease subdomains with ease.
+> Share subdomains with ease.
 
 ## About
 
@@ -31,6 +31,6 @@ Contributions are what make the open source community such an amazing place to l
 
 ## License
 
-> **Guilded.JS** © [zaida04](https://github.com/zaida04). Released under [MIT](https://github.com/zaida04/tenant/blob/main/LICENSE).
+> **Tenant** © [zaida04](https://github.com/zaida04). Released under [MIT](https://github.com/zaida04/tenant/blob/main/LICENSE).
 
 Maintained by: [zaida04](https://github.com/zaida04).
