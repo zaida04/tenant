@@ -1,6 +1,6 @@
 # Tenant
 
-> Share subdomains with ease.
+> Share subdomains with ease. Powering [is-a.engineer](https://github.com/is-a-engineer/is-a.engineer)
 
 ## About
 
