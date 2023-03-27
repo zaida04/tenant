@@ -24,5 +24,17 @@
   },
   "dependencies": {
     "chalk": "^5.2.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": ["neon/common", "neon/node", "neon/typescript", "neon/prettier"],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "import/extensions": "off",
+      "import/no-extraneous-dependencies": "off"
+    },
+    "ignorePatterns": ["**/dist/*", "scripts/cloudflare/types.d.ts"]
   }
 }
